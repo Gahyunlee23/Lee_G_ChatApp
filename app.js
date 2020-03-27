@@ -6,7 +6,7 @@ const io = require('socket.io')();
 
 const port = process.env.PORT || 3030;
 
-const user = {}
+// const user = {}
 
 app.use(express.static('public'));
 
@@ -24,15 +24,15 @@ io.on('connection', function(socket) {
     console.log('user conencted');
     socket.emit('connected', { sID: `${socket.id}`, message: 'new connection'});
 
-    socket.on('new-user', name => {
-        user[socket.id] = name
-        socket.emit('user connected', name)
-    })
+    // socket.on('new-user', name => {
+    //     user[socket.id] = name
+    //     socket.emit('user connected', name)
+    // })
 
     socket.on('chat_message', function(msg) {
         console.log(msg);
 
-        io.emit('new_message', { id: socket.id, name: user[socket.id], message: msg })
+        io.emit('new_message', { id: socket.id, message: msg })
     }) 
 
     

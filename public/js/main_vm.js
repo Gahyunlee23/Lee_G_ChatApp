@@ -3,28 +3,29 @@ import ChatMessage from "./modules/ChatMessage.js";
 
 const socket = io();
 
-const messageCon = document.querySelector(".message-container");
+// const messageCon = document.querySelector(".message-container");
 
-const name = prompt("What is your name?");
+// const name = prompt("What is your name?");
 
-appendMessage(`${name} joined`);
+// appendMessage(`${name} joined`);
+// socket.emit('new-user', name);
 
-socket.emit('new-user', name);
 
-socket.on('user-connected', name => {
-    appendMessage(`${name} connected`)
-})
+
+// socket.on('user-connected', name => {
+//     appendMessage(`${name} connected`)
+// })
 
 function setUserId({sID, message}) {
     console.log(message);
     vm.socketID = sID;
 }
 
-function appendMessage(message) {
-    const messageElement = document.createElement('div');
-    messageElement.innerText = message;
-    messageCon.append(messageElement);
-}
+// function appendMessage(message) {
+//     const messageElement = document.createElement('div');
+//     messageElement.innerText = message;
+//     messageCon.append(messageElement);
+// }
 
 function runDisconnectMesaage(packet) {
     console.log(packet);
